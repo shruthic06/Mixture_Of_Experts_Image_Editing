@@ -1,0 +1,11 @@
+W1201 02:36:37.526000 2834283 site-packages/torch/distributed/run.py:793] 
+W1201 02:36:37.526000 2834283 site-packages/torch/distributed/run.py:793] *****************************************
+W1201 02:36:37.526000 2834283 site-packages/torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1201 02:36:37.526000 2834283 site-packages/torch/distributed/run.py:793] *****************************************
+/home/khasti/miniconda3/envs/sd-moe/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/khasti/miniconda3/envs/sd-moe/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[rank0]:[W1201 02:37:50.886636900 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank1]:[W1201 02:37:50.886652439 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[2025-12-01T10:36:35.016] error: *** JOB 41039802 ON sg030 CANCELLED AT 2025-12-01T10:36:35 DUE TO TIME LIMIT ***

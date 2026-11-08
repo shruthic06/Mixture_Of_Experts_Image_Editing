@@ -1,0 +1,81 @@
+============================================
+SD1.5 MoE Quick Test
+Date: Sun Nov 30 23:08:49 MST 2025
+Node: sg001
+GPU: NVIDIA A100-SXM4-80GB
+============================================
+============================================================
+SD1.5 InstructPix2Pix Training Validation
+============================================================
+Test mode: quick
+Device: cuda
+GPU: NVIDIA A100-SXM4-80GB
+============================================================
+
+============================================================
+TEST 1: Import validation
+============================================================
+  ✓ diffusers
+  ✓ diffusers.models.attention.BasicTransformerBlock
+  ✓ transformers (CLIP)
+  ✓ datasets
+  ✓ torchvision
+
+  PASSED: All imports successful
+
+============================================================
+TEST 5: Normalize transform validation
+============================================================
+  ✓ Normalize transform works: torch.Size([3, 256, 256]) -> range [-1.00, 0.99]
+
+  PASSED: Normalize transform working correctly
+
+============================================================
+TEST 4: Dual CFG dropout logic validation
+============================================================
+  Dropout analysis (n=10000, prob=0.05):
+    Text dropped only:    483 (4.8%) - expected ~5%
+    Image dropped only:   521 (5.2%) - expected ~5%
+    Both dropped:         499 (5.0%) - expected ~5%
+    Neither dropped:     8497 (85.0%) - expected ~85%
+  ✓ text_only: 0.048 ≈ 0.050
+  ✓ image_only: 0.052 ≈ 0.050
+  ✓ both: 0.050 ≈ 0.050
+  ✓ neither: 0.850 ≈ 0.850
+
+  PASSED: Dual CFG dropout logic correct
+
+============================================================
+TEST 2: MoE component validation
+============================================================
+  ✓ MoE components imported
+  ✓ MoEFeedForward forward pass: input torch.Size([2, 64, 320]) -> output torch.Size([2, 64, 320])
+  ✓ Auxiliary loss computed: 1.0056
+  ✓ Backward pass successful
+
+  PASSED: MoE components working correctly
+
+============================================================
+TEST 7: Checkpoint save/load validation
+============================================================
+  ✓ Checkpoint saved to /tmp/tmpkh8fhlim.pt
+  ✓ Checkpoint loaded successfully
+    epoch: 5, step: 1000, type: moe
+  ✓ State dict loaded into new model
+
+  PASSED: Checkpoint save/load working correctly
+
+============================================================
+VALIDATION SUMMARY
+============================================================
+  imports: ✓ PASSED
+  normalize: ✓ PASSED
+  cfg_dropout: ✓ PASSED
+  moe_components: ✓ PASSED
+  checkpoint: ✓ PASSED
+============================================================
+ALL TESTS PASSED! Ready to start training.
+
+============================================
+Test completed at Sun Nov 30 23:09:02 MST 2025
+============================================

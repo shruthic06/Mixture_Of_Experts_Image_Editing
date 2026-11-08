@@ -1,0 +1,20 @@
+Using: /home/khasti/miniconda3/envs/sd-moe/bin/python
+Python 3.10.19
+PyTorch 2.5.1+cu121, CUDA: True
+Device: cuda
+Loading models...
+Loading checkpoint: /scratch/khasti/sd15-moe-pix2pix/run-20251201-023626/checkpoint_step_252000.pt
+Model type (from checkpoint): moe
+Loading base UNet from runwayml/stable-diffusion-v1-5...
+Converting to InstructPix2Pix (8 input channels)...
+Applying MoE with 4 experts...
+Replaced 16 FFN blocks
+Loading trained weights...
+Model loaded!
+  Epoch: 10
+  Global step: 252000
+  Best loss: 0.12144143334159992
+Loading input image: test_input.jpg
+Running inference with prompt: 'add a tree'
+Saved output to: test_output.jpg
+Done!

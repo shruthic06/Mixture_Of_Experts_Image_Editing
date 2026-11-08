@@ -1,0 +1,391 @@
+============================================
+Resuming SD1.5 + MoE Training
+============================================
+Date: Tue Dec  9 16:57:42 MST 2025
+Checkpoint: /scratch/khasti/sd15-moe-pix2pix/run-20251201-023626/checkpoint_step_298000.pt
+Output: /scratch/khasti/sd15-moe-pix2pix/run-20251201-023626
+Total epochs: 40
+Learning rate: 5e-5
+Conditioning dropout: 0.05
+Experts: 4 (top-2)
+============================================
+======================================================================
+SD1.5 + MoE UNet Training for InstructPix2Pix
+Matching official InstructPix2Pix implementation
+======================================================================
+World size: 2
+Learning rate: 5e-05
+Conditioning dropout: 0.05
+Experts: 4, Top-2 gating
+======================================================================
+Loading models...
+Converting UNet for InstructPix2Pix (8 channels, zero-init)...
+Applying MoE with 4 experts...
+Replaced 16 FFN blocks with MoE
+UNet params: 1,107,527,684
+sg019:3692186:3692186 [0] NCCL INFO Bootstrap : Using ib0:192.168.150.19<0>
+sg019:3692186:3692186 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+sg019:3692186:3692186 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+sg019:3692186:3692186 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+sg019:3692186:3692186 [0] NCCL INFO cudaDriverVersion 13000
+NCCL version 2.21.5+cuda12.4
+sg019:3692187:3692187 [1] NCCL INFO cudaDriverVersion 13000
+sg019:3692187:3692187 [1] NCCL INFO Bootstrap : Using ib0:192.168.150.19<0>
+sg019:3692187:3692187 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+sg019:3692187:3692187 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+sg019:3692187:3692187 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+sg019:3692186:3692363 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+sg019:3692187:3692364 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+sg019:3692186:3692363 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_2:1/IB [RO]; OOB ib0:192.168.150.19<0>
+sg019:3692187:3692364 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_2:1/IB [RO]; OOB ib0:192.168.150.19<0>
+sg019:3692186:3692363 [0] NCCL INFO Using non-device net plugin version 0
+sg019:3692186:3692363 [0] NCCL INFO Using network IB
+sg019:3692187:3692364 [1] NCCL INFO Using non-device net plugin version 0
+sg019:3692187:3692364 [1] NCCL INFO Using network IB
+sg019:3692186:3692363 [0] NCCL INFO DMA-BUF is available on GPU device 0
+sg019:3692187:3692364 [1] NCCL INFO DMA-BUF is available on GPU device 1
+sg019:3692186:3692363 [0] NCCL INFO ncclCommInitRank comm 0xb07ac30 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 41000 commId 0x1e3c8453193bd3ea - Init START
+sg019:3692187:3692364 [1] NCCL INFO ncclCommInitRank comm 0xb8a0850 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 81000 commId 0x1e3c8453193bd3ea - Init START
+sg019:3692186:3692363 [0] NCCL INFO comm 0xb07ac30 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+sg019:3692187:3692364 [1] NCCL INFO comm 0xb8a0850 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+sg019:3692186:3692363 [0] NCCL INFO Channel 00/08 :    0   1
+sg019:3692186:3692363 [0] NCCL INFO Channel 01/08 :    0   1
+sg019:3692186:3692363 [0] NCCL INFO Channel 02/08 :    0   1
+sg019:3692186:3692363 [0] NCCL INFO Channel 03/08 :    0   1
+sg019:3692187:3692364 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] 0/-1/-1->1->-1 [3] 0/-1/-1->1->-1 [4] -1/-1/-1->1->0 [5] -1/-1/-1->1->0 [6] 0/-1/-1->1->-1 [7] 0/-1/-1->1->-1
+sg019:3692186:3692363 [0] NCCL INFO Channel 04/08 :    0   1
+sg019:3692187:3692364 [1] NCCL INFO P2P Chunksize set to 524288
+sg019:3692186:3692363 [0] NCCL INFO Channel 05/08 :    0   1
+sg019:3692186:3692363 [0] NCCL INFO Channel 06/08 :    0   1
+sg019:3692186:3692363 [0] NCCL INFO Channel 07/08 :    0   1
+sg019:3692186:3692363 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] -1/-1/-1->0->1 [3] -1/-1/-1->0->1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] -1/-1/-1->0->1 [7] -1/-1/-1->0->1
+sg019:3692186:3692363 [0] NCCL INFO P2P Chunksize set to 524288
+sg019:3692186:3692363 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+sg019:3692186:3692363 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+sg019:3692186:3692363 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+sg019:3692186:3692363 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+sg019:3692186:3692363 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+sg019:3692186:3692363 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+sg019:3692186:3692363 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+sg019:3692186:3692363 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/CUMEM/read
+sg019:3692187:3692364 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+sg019:3692187:3692364 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+sg019:3692187:3692364 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+sg019:3692187:3692364 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+sg019:3692187:3692364 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+sg019:3692187:3692364 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+sg019:3692187:3692364 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+sg019:3692187:3692364 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/CUMEM/read
+sg019:3692186:3692363 [0] NCCL INFO Connected all rings
+sg019:3692186:3692363 [0] NCCL INFO Connected all trees
+sg019:3692187:3692364 [1] NCCL INFO Connected all rings
+sg019:3692187:3692364 [1] NCCL INFO Connected all trees
+sg019:3692187:3692364 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+sg019:3692187:3692364 [1] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 8 p2p channels per peer
+sg019:3692186:3692363 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+sg019:3692186:3692363 [0] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 8 p2p channels per peer
+sg019:3692186:3692363 [0] NCCL INFO TUNER/Plugin: Plugin load returned 11 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+sg019:3692186:3692363 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+sg019:3692186:3692363 [0] NCCL INFO ncclCommInitRank comm 0xb07ac30 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 41000 commId 0x1e3c8453193bd3ea - Init COMPLETE
+sg019:3692187:3692364 [1] NCCL INFO TUNER/Plugin: Plugin load returned 11 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+sg019:3692187:3692364 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+sg019:3692187:3692364 [1] NCCL INFO ncclCommInitRank comm 0xb8a0850 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 81000 commId 0x1e3c8453193bd3ea - Init COMPLETE
+Loading dataset...
+Dataset size: 313,010 samples
+Resuming from: /scratch/khasti/sd15-moe-pix2pix/run-20251201-023626/checkpoint_step_298000.pt
+Resumed from epoch 19, step 298000
+
+Starting training...
+Steps per epoch: 4890
+----------------------------------------------------------------------
+Epoch 20/40 | Step 298100 | Loss: 0.1134 | Aux: 1.0002
+Epoch 20/40 | Step 298200 | Loss: 0.1207 | Aux: 1.0003
+Epoch 20/40 | Step 298300 | Loss: 0.1215 | Aux: 1.0009
+Epoch 20/40 | Step 298400 | Loss: 0.1347 | Aux: 1.0005
+Epoch 20/40 | Step 298500 | Loss: 0.1002 | Aux: 1.0002
+Epoch 20/40 | Step 298600 | Loss: 0.0958 | Aux: 1.0004
+Epoch 20/40 | Step 298700 | Loss: 0.0921 | Aux: 1.0001
+Epoch 20/40 | Step 298800 | Loss: 0.0745 | Aux: 1.0018
+Epoch 20/40 | Step 298900 | Loss: 0.1290 | Aux: 1.0003
+Epoch 20/40 | Step 299000 | Loss: 0.1094 | Aux: 1.0002
+Epoch 20/40 | Step 299100 | Loss: 0.1144 | Aux: 1.0008
+Epoch 20/40 | Step 299200 | Loss: 0.0768 | Aux: 1.0002
+Epoch 20/40 | Step 299300 | Loss: 0.1935 | Aux: 1.0023
+Epoch 20/40 | Step 299400 | Loss: 0.1307 | Aux: 1.0005
+Epoch 20/40 | Step 299500 | Loss: 0.1323 | Aux: 1.0006
+Epoch 20/40 | Step 299600 | Loss: 0.1104 | Aux: 1.0009
+Epoch 20/40 | Step 299700 | Loss: 0.1148 | Aux: 1.0012
+Epoch 20/40 | Step 299800 | Loss: 0.1158 | Aux: 1.0002
+Epoch 20/40 | Step 299900 | Loss: 0.0745 | Aux: 1.0004
+Epoch 20/40 | Step 300000 | Loss: 0.0728 | Aux: 1.0001
+Epoch 20/40 | Step 300100 | Loss: 0.1072 | Aux: 1.0002
+Epoch 20/40 | Step 300200 | Loss: 0.1562 | Aux: 1.0006
+Epoch 20/40 | Step 300300 | Loss: 0.2045 | Aux: 1.0023
+Epoch 20/40 | Step 300400 | Loss: 0.1292 | Aux: 1.0005
+Epoch 20/40 | Step 300500 | Loss: 0.1391 | Aux: 1.0012
+Epoch 20/40 | Step 300600 | Loss: 0.0712 | Aux: 1.0004
+Epoch 20/40 | Step 300700 | Loss: 0.1182 | Aux: 1.0008
+Epoch 20/40 | Step 300800 | Loss: 0.1265 | Aux: 1.0003
+Epoch 20/40 | Step 300900 | Loss: 0.0681 | Aux: 1.0009
+Epoch 20/40 | Step 301000 | Loss: 0.1021 | Aux: 1.0001
+Epoch 20/40 | Step 301100 | Loss: 0.0937 | Aux: 1.0001
+Epoch 20/40 | Step 301200 | Loss: 0.0972 | Aux: 1.0004
+Epoch 20/40 | Step 301300 | Loss: 0.0996 | Aux: 1.0001
+Epoch 20/40 | Step 301400 | Loss: 0.1437 | Aux: 1.0006
+Epoch 20/40 | Step 301500 | Loss: 0.0810 | Aux: 1.0013
+Epoch 20/40 | Step 301600 | Loss: 0.1349 | Aux: 1.0008
+Epoch 20/40 | Step 301700 | Loss: 0.0795 | Aux: 1.0008
+Epoch 20/40 | Step 301800 | Loss: 0.1466 | Aux: 1.0019
+Epoch 20/40 | Step 301900 | Loss: 0.0683 | Aux: 1.0012
+Epoch 20/40 | Step 302000 | Loss: 0.1300 | Aux: 1.0005
+Epoch 20/40 | Step 302100 | Loss: 0.1254 | Aux: 1.0005
+Epoch 20/40 | Step 302200 | Loss: 0.1014 | Aux: 1.0004
+Epoch 20/40 | Step 302300 | Loss: 0.0891 | Aux: 1.0001
+Epoch 20/40 | Step 302400 | Loss: 0.1038 | Aux: 1.0003
+Epoch 20/40 | Step 302500 | Loss: 0.0844 | Aux: 1.0009
+Epoch 20/40 | Step 302600 | Loss: 0.1513 | Aux: 1.0008
+Epoch 20/40 | Step 302700 | Loss: 0.1123 | Aux: 1.0003
+Epoch 20/40 | Step 302800 | Loss: 0.1249 | Aux: 1.0012
+Epoch 20/40 | Avg Loss: 0.1191 | Avg Aux: 1.0007 | Time: 6863.6s
+Epoch 21/40 | Step 302900 | Loss: 0.1663 | Aux: 1.0024
+Epoch 21/40 | Step 303000 | Loss: 0.1517 | Aux: 1.0023
+Epoch 21/40 | Step 303100 | Loss: 0.1239 | Aux: 1.0006
+Epoch 21/40 | Step 303200 | Loss: 0.0748 | Aux: 1.0002
+Epoch 21/40 | Step 303300 | Loss: 0.1201 | Aux: 1.0004
+Epoch 21/40 | Step 303400 | Loss: 0.0891 | Aux: 1.0000
+Epoch 21/40 | Step 303500 | Loss: 0.1275 | Aux: 1.0017
+Epoch 21/40 | Step 303600 | Loss: 0.1068 | Aux: 1.0005
+Epoch 21/40 | Step 303700 | Loss: 0.0972 | Aux: 1.0002
+Epoch 21/40 | Step 303800 | Loss: 0.1240 | Aux: 1.0010
+Epoch 21/40 | Step 303900 | Loss: 0.1128 | Aux: 1.0001
+Epoch 21/40 | Step 304000 | Loss: 0.0828 | Aux: 1.0009
+Epoch 21/40 | Step 304100 | Loss: 0.1009 | Aux: 1.0004
+Epoch 21/40 | Step 304200 | Loss: 0.0897 | Aux: 1.0007
+Epoch 21/40 | Step 304300 | Loss: 0.0747 | Aux: 1.0004
+Epoch 21/40 | Step 304400 | Loss: 0.1263 | Aux: 1.0011
+Epoch 21/40 | Step 304500 | Loss: 0.1295 | Aux: 1.0004
+Epoch 21/40 | Step 304600 | Loss: 0.1596 | Aux: 1.0002
+Epoch 21/40 | Step 304700 | Loss: 0.1399 | Aux: 1.0017
+Epoch 21/40 | Step 304800 | Loss: 0.1340 | Aux: 1.0004
+Epoch 21/40 | Step 304900 | Loss: 0.1439 | Aux: 1.0015
+Epoch 21/40 | Step 305000 | Loss: 0.1127 | Aux: 1.0003
+Epoch 21/40 | Step 305100 | Loss: 0.0701 | Aux: 1.0028
+Epoch 21/40 | Step 305200 | Loss: 0.1337 | Aux: 1.0004
+Epoch 21/40 | Step 305300 | Loss: 0.1439 | Aux: 1.0002
+Epoch 21/40 | Step 305400 | Loss: 0.0835 | Aux: 1.0008
+Epoch 21/40 | Step 305500 | Loss: 0.1377 | Aux: 1.0019
+Epoch 21/40 | Step 305600 | Loss: 0.1024 | Aux: 1.0002
+Epoch 21/40 | Step 305700 | Loss: 0.1511 | Aux: 1.0014
+Epoch 21/40 | Step 305800 | Loss: 0.1715 | Aux: 1.0003
+Epoch 21/40 | Step 305900 | Loss: 0.1099 | Aux: 1.0007
+Epoch 21/40 | Step 306000 | Loss: 0.1083 | Aux: 1.0005
+Epoch 21/40 | Step 306100 | Loss: 0.1639 | Aux: 1.0019
+Epoch 21/40 | Step 306200 | Loss: 0.1376 | Aux: 1.0006
+Epoch 21/40 | Step 306300 | Loss: 0.1203 | Aux: 1.0008
+Epoch 21/40 | Step 306400 | Loss: 0.1206 | Aux: 1.0003
+Epoch 21/40 | Step 306500 | Loss: 0.1276 | Aux: 1.0005
+Epoch 21/40 | Step 306600 | Loss: 0.0975 | Aux: 1.0005
+Epoch 21/40 | Step 306700 | Loss: 0.0920 | Aux: 1.0002
+Epoch 21/40 | Step 306800 | Loss: 0.1288 | Aux: 1.0009
+Epoch 21/40 | Step 306900 | Loss: 0.1337 | Aux: 1.0001
+Epoch 21/40 | Step 307000 | Loss: 0.1229 | Aux: 1.0008
+Epoch 21/40 | Step 307100 | Loss: 0.1175 | Aux: 1.0007
+Epoch 21/40 | Step 307200 | Loss: 0.1414 | Aux: 1.0005
+Epoch 21/40 | Step 307300 | Loss: 0.1206 | Aux: 1.0008
+Epoch 21/40 | Step 307400 | Loss: 0.0925 | Aux: 1.0003
+Epoch 21/40 | Step 307500 | Loss: 0.1454 | Aux: 1.0010
+Epoch 21/40 | Step 307600 | Loss: 0.1295 | Aux: 1.0003
+Epoch 21/40 | Step 307700 | Loss: 0.1349 | Aux: 1.0002
+Epoch 21/40 | Avg Loss: 0.1193 | Avg Aux: 1.0007 | Time: 4023.4s
+Epoch 22/40 | Step 307800 | Loss: 0.1428 | Aux: 1.0002
+Epoch 22/40 | Step 307900 | Loss: 0.0881 | Aux: 1.0002
+Epoch 22/40 | Step 308000 | Loss: 0.0945 | Aux: 1.0003
+Epoch 22/40 | Step 308100 | Loss: 0.1518 | Aux: 1.0005
+Epoch 22/40 | Step 308200 | Loss: 0.1025 | Aux: 1.0012
+Epoch 22/40 | Step 308300 | Loss: 0.1559 | Aux: 1.0011
+Epoch 22/40 | Step 308400 | Loss: 0.1002 | Aux: 1.0006
+Epoch 22/40 | Step 308500 | Loss: 0.1372 | Aux: 1.0002
+Epoch 22/40 | Step 308600 | Loss: 0.1632 | Aux: 1.0004
+Epoch 22/40 | Step 308700 | Loss: 0.1402 | Aux: 1.0001
+Epoch 22/40 | Step 308800 | Loss: 0.1115 | Aux: 1.0006
+Epoch 22/40 | Step 308900 | Loss: 0.0949 | Aux: 1.0010
+Epoch 22/40 | Step 309000 | Loss: 0.1205 | Aux: 1.0002
+Epoch 22/40 | Step 309100 | Loss: 0.0885 | Aux: 1.0004
+Epoch 22/40 | Step 309200 | Loss: 0.1045 | Aux: 1.0010
+Epoch 22/40 | Step 309300 | Loss: 0.1399 | Aux: 1.0010
+Epoch 22/40 | Step 309400 | Loss: 0.0852 | Aux: 1.0004
+Epoch 22/40 | Step 309500 | Loss: 0.1278 | Aux: 1.0016
+Epoch 22/40 | Step 309600 | Loss: 0.1782 | Aux: 1.0012
+Epoch 22/40 | Step 309700 | Loss: 0.1241 | Aux: 1.0005
+Epoch 22/40 | Step 309800 | Loss: 0.0818 | Aux: 1.0002
+Epoch 22/40 | Step 309900 | Loss: 0.1830 | Aux: 1.0008
+Epoch 22/40 | Step 310000 | Loss: 0.1445 | Aux: 1.0015
+Epoch 22/40 | Step 310100 | Loss: 0.1213 | Aux: 1.0013
+Epoch 22/40 | Step 310200 | Loss: 0.1360 | Aux: 1.0018
+Epoch 22/40 | Step 310300 | Loss: 0.1091 | Aux: 1.0002
+Epoch 22/40 | Step 310400 | Loss: 0.1219 | Aux: 1.0004
+Epoch 22/40 | Step 310500 | Loss: 0.1551 | Aux: 1.0004
+Epoch 22/40 | Step 310600 | Loss: 0.1036 | Aux: 1.0005
+Epoch 22/40 | Step 310700 | Loss: 0.1035 | Aux: 1.0011
+Epoch 22/40 | Step 310800 | Loss: 0.1340 | Aux: 1.0008
+Epoch 22/40 | Step 310900 | Loss: 0.1232 | Aux: 1.0007
+Epoch 22/40 | Step 311000 | Loss: 0.0820 | Aux: 1.0004
+Epoch 22/40 | Step 311100 | Loss: 0.0990 | Aux: 1.0003
+Epoch 22/40 | Step 311200 | Loss: 0.1363 | Aux: 1.0016
+Epoch 22/40 | Step 311300 | Loss: 0.1044 | Aux: 1.0007
+Epoch 22/40 | Step 311400 | Loss: 0.0750 | Aux: 1.0009
+Epoch 22/40 | Step 311500 | Loss: 0.0834 | Aux: 1.0004
+Epoch 22/40 | Step 311600 | Loss: 0.1657 | Aux: 1.0005
+Epoch 22/40 | Step 311700 | Loss: 0.0509 | Aux: 1.0005
+Epoch 22/40 | Step 311800 | Loss: 0.1656 | Aux: 1.0015
+Epoch 22/40 | Step 311900 | Loss: 0.0951 | Aux: 1.0002
+Epoch 22/40 | Step 312000 | Loss: 0.0988 | Aux: 1.0022
+Epoch 22/40 | Step 312100 | Loss: 0.1183 | Aux: 1.0012
+Epoch 22/40 | Step 312200 | Loss: 0.1002 | Aux: 1.0004
+Epoch 22/40 | Step 312300 | Loss: 0.0910 | Aux: 1.0006
+Epoch 22/40 | Step 312400 | Loss: 0.1184 | Aux: 1.0004
+Epoch 22/40 | Step 312500 | Loss: 0.1003 | Aux: 1.0002
+Epoch 22/40 | Step 312600 | Loss: 0.1563 | Aux: 1.0010
+Epoch 22/40 | Avg Loss: 0.1190 | Avg Aux: 1.0007 | Time: 4237.6s
+Epoch 23/40 | Step 312700 | Loss: 0.1345 | Aux: 1.0006
+Epoch 23/40 | Step 312800 | Loss: 0.1186 | Aux: 1.0004
+Epoch 23/40 | Step 312900 | Loss: 0.1152 | Aux: 1.0010
+Epoch 23/40 | Step 313000 | Loss: 0.1132 | Aux: 1.0008
+Epoch 23/40 | Step 313100 | Loss: 0.1554 | Aux: 1.0016
+Epoch 23/40 | Step 313200 | Loss: 0.0908 | Aux: 1.0002
+Epoch 23/40 | Step 313300 | Loss: 0.0785 | Aux: 1.0004
+Epoch 23/40 | Step 313400 | Loss: 0.0955 | Aux: 1.0013
+Epoch 23/40 | Step 313500 | Loss: 0.1044 | Aux: 1.0002
+Epoch 23/40 | Step 313600 | Loss: 0.0998 | Aux: 1.0003
+Epoch 23/40 | Step 313700 | Loss: 0.1885 | Aux: 1.0010
+Epoch 23/40 | Step 313800 | Loss: 0.1259 | Aux: 1.0000
+Epoch 23/40 | Step 313900 | Loss: 0.1056 | Aux: 1.0006
+Epoch 23/40 | Step 314000 | Loss: 0.1065 | Aux: 1.0013
+Epoch 23/40 | Step 314100 | Loss: 0.1368 | Aux: 1.0022
+Epoch 23/40 | Step 314200 | Loss: 0.1309 | Aux: 1.0003
+Epoch 23/40 | Step 314300 | Loss: 0.0970 | Aux: 1.0000
+Epoch 23/40 | Step 314400 | Loss: 0.1172 | Aux: 1.0009
+Epoch 23/40 | Step 314500 | Loss: 0.1662 | Aux: 1.0006
+Epoch 23/40 | Step 314600 | Loss: 0.1092 | Aux: 1.0001
+Epoch 23/40 | Step 314700 | Loss: 0.1171 | Aux: 1.0000
+Epoch 23/40 | Step 314800 | Loss: 0.1122 | Aux: 1.0005
+Epoch 23/40 | Step 314900 | Loss: 0.1361 | Aux: 1.0007
+Epoch 23/40 | Step 315000 | Loss: 0.1218 | Aux: 1.0010
+Epoch 23/40 | Step 315100 | Loss: 0.1061 | Aux: 1.0004
+Epoch 23/40 | Step 315200 | Loss: 0.1231 | Aux: 1.0007
+Epoch 23/40 | Step 315300 | Loss: 0.1017 | Aux: 1.0014
+Epoch 23/40 | Step 315400 | Loss: 0.1507 | Aux: 1.0004
+Epoch 23/40 | Step 315500 | Loss: 0.0979 | Aux: 1.0007
+Epoch 23/40 | Step 315600 | Loss: 0.1173 | Aux: 1.0001
+Epoch 23/40 | Step 315700 | Loss: 0.1398 | Aux: 1.0008
+Epoch 23/40 | Step 315800 | Loss: 0.1235 | Aux: 1.0003
+Epoch 23/40 | Step 315900 | Loss: 0.1866 | Aux: 1.0013
+Epoch 23/40 | Step 316000 | Loss: 0.0974 | Aux: 1.0000
+Epoch 23/40 | Step 316100 | Loss: 0.1045 | Aux: 1.0005
+Epoch 23/40 | Step 316200 | Loss: 0.1302 | Aux: 1.0008
+Epoch 23/40 | Step 316300 | Loss: 0.0761 | Aux: 1.0009
+Epoch 23/40 | Step 316400 | Loss: 0.1512 | Aux: 1.0006
+Epoch 23/40 | Step 316500 | Loss: 0.1470 | Aux: 1.0009
+Epoch 23/40 | Step 316600 | Loss: 0.1160 | Aux: 1.0011
+Epoch 23/40 | Step 316700 | Loss: 0.1026 | Aux: 1.0009
+Epoch 23/40 | Step 316800 | Loss: 0.0868 | Aux: 1.0013
+Epoch 23/40 | Step 316900 | Loss: 0.1612 | Aux: 1.0010
+Epoch 23/40 | Step 317000 | Loss: 0.1129 | Aux: 1.0012
+Epoch 23/40 | Step 317100 | Loss: 0.1128 | Aux: 1.0012
+Epoch 23/40 | Step 317200 | Loss: 0.0987 | Aux: 1.0005
+Epoch 23/40 | Step 317300 | Loss: 0.1035 | Aux: 1.0000
+Epoch 23/40 | Step 317400 | Loss: 0.1286 | Aux: 1.0005
+Epoch 23/40 | Step 317500 | Loss: 0.1301 | Aux: 1.0003
+Epoch 23/40 | Avg Loss: 0.1185 | Avg Aux: 1.0007 | Time: 4490.1s
+  └── New best model saved!
+Epoch 24/40 | Step 317600 | Loss: 0.0931 | Aux: 1.0001
+Epoch 24/40 | Step 317700 | Loss: 0.1191 | Aux: 1.0011
+Epoch 24/40 | Step 317800 | Loss: 0.1091 | Aux: 1.0011
+Epoch 24/40 | Step 317900 | Loss: 0.1231 | Aux: 1.0002
+Epoch 24/40 | Step 318000 | Loss: 0.1198 | Aux: 1.0026
+Epoch 24/40 | Step 318100 | Loss: 0.1300 | Aux: 1.0005
+Epoch 24/40 | Step 318200 | Loss: 0.1300 | Aux: 1.0010
+Epoch 24/40 | Step 318300 | Loss: 0.1305 | Aux: 1.0019
+Epoch 24/40 | Step 318400 | Loss: 0.1189 | Aux: 1.0000
+Epoch 24/40 | Step 318500 | Loss: 0.1232 | Aux: 1.0003
+Epoch 24/40 | Step 318600 | Loss: 0.1100 | Aux: 1.0023
+Epoch 24/40 | Step 318700 | Loss: 0.0886 | Aux: 1.0007
+Epoch 24/40 | Step 318800 | Loss: 0.0993 | Aux: 1.0008
+Epoch 24/40 | Step 318900 | Loss: 0.1293 | Aux: 1.0006
+Epoch 24/40 | Step 319000 | Loss: 0.0977 | Aux: 1.0004
+Epoch 24/40 | Step 319100 | Loss: 0.1182 | Aux: 1.0013
+Epoch 24/40 | Step 319200 | Loss: 0.1038 | Aux: 1.0009
+Epoch 24/40 | Step 319300 | Loss: 0.0968 | Aux: 1.0008
+Epoch 24/40 | Step 319400 | Loss: 0.0844 | Aux: 1.0005
+Epoch 24/40 | Step 319500 | Loss: 0.1548 | Aux: 1.0001
+Epoch 24/40 | Step 319600 | Loss: 0.0858 | Aux: 1.0000
+Epoch 24/40 | Step 319700 | Loss: 0.1196 | Aux: 1.0003
+Epoch 24/40 | Step 319800 | Loss: 0.1303 | Aux: 1.0013
+Epoch 24/40 | Step 319900 | Loss: 0.1134 | Aux: 1.0001
+Epoch 24/40 | Step 320000 | Loss: 0.0799 | Aux: 1.0008
+Epoch 24/40 | Step 320100 | Loss: 0.1102 | Aux: 1.0005
+Epoch 24/40 | Step 320200 | Loss: 0.0832 | Aux: 1.0004
+Epoch 24/40 | Step 320300 | Loss: 0.0820 | Aux: 1.0002
+Epoch 24/40 | Step 320400 | Loss: 0.1694 | Aux: 1.0024
+Epoch 24/40 | Step 320500 | Loss: 0.1620 | Aux: 1.0006
+Epoch 24/40 | Step 320600 | Loss: 0.1010 | Aux: 1.0004
+Epoch 24/40 | Step 320700 | Loss: 0.0793 | Aux: 1.0003
+Epoch 24/40 | Step 320800 | Loss: 0.1159 | Aux: 1.0000
+Epoch 24/40 | Step 320900 | Loss: 0.0968 | Aux: 1.0002
+Epoch 24/40 | Step 321000 | Loss: 0.0985 | Aux: 1.0009
+Epoch 24/40 | Step 321100 | Loss: 0.1145 | Aux: 1.0009
+Epoch 24/40 | Step 321200 | Loss: 0.1194 | Aux: 1.0003
+Epoch 24/40 | Step 321300 | Loss: 0.1117 | Aux: 1.0017
+Epoch 24/40 | Step 321400 | Loss: 0.1064 | Aux: 1.0009
+Epoch 24/40 | Step 321500 | Loss: 0.1334 | Aux: 1.0005
+Epoch 24/40 | Step 321600 | Loss: 0.0659 | Aux: 1.0011
+Epoch 24/40 | Step 321700 | Loss: 0.1096 | Aux: 1.0002
+Epoch 24/40 | Step 321800 | Loss: 0.0889 | Aux: 1.0003
+Epoch 24/40 | Step 321900 | Loss: 0.1338 | Aux: 1.0012
+Epoch 24/40 | Step 322000 | Loss: 0.1181 | Aux: 1.0009
+Epoch 24/40 | Step 322100 | Loss: 0.1243 | Aux: 1.0008
+Epoch 24/40 | Step 322200 | Loss: 0.1330 | Aux: 1.0003
+Epoch 24/40 | Step 322300 | Loss: 0.1903 | Aux: 1.0018
+Epoch 24/40 | Step 322400 | Loss: 0.0845 | Aux: 1.0013
+Epoch 24/40 | Avg Loss: 0.1187 | Avg Aux: 1.0007 | Time: 5148.4s
+Epoch 25/40 | Step 322500 | Loss: 0.1161 | Aux: 1.0006
+Epoch 25/40 | Step 322600 | Loss: 0.1040 | Aux: 1.0003
+Epoch 25/40 | Step 322700 | Loss: 0.0933 | Aux: 1.0003
+Epoch 25/40 | Step 322800 | Loss: 0.1518 | Aux: 1.0029
+Epoch 25/40 | Step 322900 | Loss: 0.1878 | Aux: 1.0009
+Epoch 25/40 | Step 323000 | Loss: 0.1323 | Aux: 1.0005
+Epoch 25/40 | Step 323100 | Loss: 0.1181 | Aux: 1.0002
+Epoch 25/40 | Step 323200 | Loss: 0.0975 | Aux: 1.0002
+Epoch 25/40 | Step 323300 | Loss: 0.1159 | Aux: 1.0004
+Epoch 25/40 | Step 323400 | Loss: 0.1428 | Aux: 1.0007
+Epoch 25/40 | Step 323500 | Loss: 0.0987 | Aux: 1.0008
+Epoch 25/40 | Step 323600 | Loss: 0.1063 | Aux: 1.0003
+Epoch 25/40 | Step 323700 | Loss: 0.1119 | Aux: 1.0004
+Epoch 25/40 | Step 323800 | Loss: 0.1205 | Aux: 1.0001
+Epoch 25/40 | Step 323900 | Loss: 0.1177 | Aux: 1.0006
+Epoch 25/40 | Step 324000 | Loss: 0.1228 | Aux: 1.0009
+Epoch 25/40 | Step 324100 | Loss: 0.0960 | Aux: 1.0005
+Epoch 25/40 | Step 324200 | Loss: 0.1360 | Aux: 1.0003
+Epoch 25/40 | Step 324300 | Loss: 0.1115 | Aux: 1.0003
+Epoch 25/40 | Step 324400 | Loss: 0.1133 | Aux: 1.0012
+Epoch 25/40 | Step 324500 | Loss: 0.0767 | Aux: 1.0005
+Epoch 25/40 | Step 324600 | Loss: 0.1269 | Aux: 1.0008
+Epoch 25/40 | Step 324700 | Loss: 0.0813 | Aux: 1.0002
+Epoch 25/40 | Step 324800 | Loss: 0.0726 | Aux: 1.0004
+Epoch 25/40 | Step 324900 | Loss: 0.1077 | Aux: 1.0030
+Epoch 25/40 | Step 325000 | Loss: 0.1571 | Aux: 1.0002
+Epoch 25/40 | Step 325100 | Loss: 0.0719 | Aux: 1.0012
+Epoch 25/40 | Step 325200 | Loss: 0.1376 | Aux: 1.0013
+Epoch 25/40 | Step 325300 | Loss: 0.1394 | Aux: 1.0005
+Epoch 25/40 | Step 325400 | Loss: 0.1042 | Aux: 1.0002
+Epoch 25/40 | Step 325500 | Loss: 0.1105 | Aux: 1.0002
+Epoch 25/40 | Step 325600 | Loss: 0.1177 | Aux: 1.0003
+Epoch 25/40 | Step 325700 | Loss: 0.1140 | Aux: 1.0004
+Epoch 25/40 | Step 325800 | Loss: 0.1158 | Aux: 1.0001
+Epoch 25/40 | Step 325900 | Loss: 0.0915 | Aux: 1.0002
+Epoch 25/40 | Step 326000 | Loss: 0.0889 | Aux: 1.0003
+Epoch 25/40 | Step 326100 | Loss: 0.1187 | Aux: 1.0033
+Epoch 25/40 | Step 326200 | Loss: 0.1237 | Aux: 1.0002
+Epoch 25/40 | Step 326300 | Loss: 0.0921 | Aux: 1.0005
+Epoch 25/40 | Step 326400 | Loss: 0.0800 | Aux: 1.0005
+Epoch 25/40 | Step 326500 | Loss: 0.1392 | Aux: 1.0006

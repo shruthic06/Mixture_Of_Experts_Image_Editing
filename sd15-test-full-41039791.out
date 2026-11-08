@@ -1,0 +1,128 @@
+============================================
+SD1.5 MoE Full Test
+Date: Sun Nov 30 23:10:45 MST 2025
+Node: sg029
+GPU: NVIDIA A100-SXM4-80GB
+Dataset: /scratch/khasti/datasets/instructpix2pix
+============================================
+============================================================
+SD1.5 InstructPix2Pix Training Validation
+============================================================
+Test mode: full
+Device: cuda
+GPU: NVIDIA A100-SXM4-80GB
+============================================================
+
+============================================================
+TEST 1: Import validation
+============================================================
+  ✓ diffusers
+  ✓ diffusers.models.attention.BasicTransformerBlock
+  ✓ transformers (CLIP)
+  ✓ datasets
+  ✓ torchvision
+
+  PASSED: All imports successful
+
+============================================================
+TEST 5: Normalize transform validation
+============================================================
+  ✓ Normalize transform works: torch.Size([3, 256, 256]) -> range [-1.00, 0.99]
+
+  PASSED: Normalize transform working correctly
+
+============================================================
+TEST 4: Dual CFG dropout logic validation
+============================================================
+  Dropout analysis (n=10000, prob=0.05):
+    Text dropped only:    497 (5.0%) - expected ~5%
+    Image dropped only:   523 (5.2%) - expected ~5%
+    Both dropped:         510 (5.1%) - expected ~5%
+    Neither dropped:     8470 (84.7%) - expected ~85%
+  ✓ text_only: 0.050 ≈ 0.050
+  ✓ image_only: 0.052 ≈ 0.050
+  ✓ both: 0.051 ≈ 0.050
+  ✓ neither: 0.847 ≈ 0.850
+
+  PASSED: Dual CFG dropout logic correct
+
+============================================================
+TEST 2: MoE component validation
+============================================================
+  ✓ MoE components imported
+  ✓ MoEFeedForward forward pass: input torch.Size([2, 64, 320]) -> output torch.Size([2, 64, 320])
+  ✓ Auxiliary loss computed: 1.0118
+  ✓ Backward pass successful
+
+  PASSED: MoE components working correctly
+
+============================================================
+TEST 7: Checkpoint save/load validation
+============================================================
+  ✓ Checkpoint saved to /tmp/tmpmhlbvxnp.pt
+  ✓ Checkpoint loaded successfully
+    epoch: 5, step: 1000, type: moe
+  ✓ State dict loaded into new model
+
+  PASSED: Checkpoint save/load working correctly
+
+============================================================
+TEST 3: UNet modification validation
+============================================================
+  Loading UNet (this may take a moment)...
+  Original UNet params: 859,520,964
+  Converting to 8 input channels...
+  ✓ UNet input channels: 8
+  Applying MoE to UNet...
+  ✓ Replaced 16 FFN blocks with MoE
+  MoE UNet params: 1,107,527,684 (1.29x)
+  ✓ MoE layers verified: 16
+  Testing forward pass with 8-channel input...
+  ✓ Forward pass successful: torch.Size([1, 8, 32, 32]) -> torch.Size([1, 4, 32, 32])
+
+  PASSED: UNet modification working correctly
+
+============================================================
+TEST 8: Full forward pass simulation
+============================================================
+  Loading models (this may take a moment)...
+  ✓ Models loaded
+  ✓ UNet modified: 8 channels, 16 MoE layers
+  Simulating training step...
+  ✓ Images encoded: torch.Size([2, 3, 256, 256]) -> torch.Size([2, 4, 32, 32])
+  ✓ Latent input prepared: torch.Size([2, 8, 32, 32])
+  ✓ UNet forward pass: torch.Size([2, 4, 32, 32])
+  ✓ Loss computed: main=0.1163, aux=1.0727
+  ✓ Backward pass: grad_norm=9.93
+
+  PASSED: Full forward pass working correctly
+
+============================================================
+TEST 6: Dataset loading validation
+============================================================
+  Loading dataset from: /scratch/khasti/datasets/instructpix2pix
+  ✓ Dataset loaded: 313010 samples
+  ✓ Found column: original_image
+  ✓ Found column: edited_image
+  ✓ Found prompt column
+  ✓ Tokenization works: 'Turn it into a photo...' -> torch.Size([1, 77])
+
+  PASSED: Dataset loading working correctly
+
+============================================================
+VALIDATION SUMMARY
+============================================================
+  imports: ✓ PASSED
+  normalize: ✓ PASSED
+  cfg_dropout: ✓ PASSED
+  moe_components: ✓ PASSED
+  checkpoint: ✓ PASSED
+  unet_modification: ✓ PASSED
+  full_forward: ✓ PASSED
+  dataset: ✓ PASSED
+============================================================
+ALL TESTS PASSED! Ready to start training.
+
+============================================
+Test completed at Sun Nov 30 23:12:17 MST 2025
+============================================
