@@ -1,4 +1,4 @@
-# SD1.5 Mixture-of-Experts for InstructPix2Pix
+# SD1.5 Mixture-of-Experts Based Image Editing with InstructPix2Pix
 
 Instruction-based image editing with Stable Diffusion 1.5, comparing a **Mixture-of-Experts (MoE) UNet** against a **dense baseline**. Both are trained with the InstructPix2Pix recipe (8-channel input, dual classifier-free guidance) on the InstructPix2Pix dataset.
 
@@ -96,7 +96,7 @@ Raising `--image_guidance_scale` keeps the output closer to the input; raising `
 ## Validate before a long run
 
 ```bash
-python validate_training.py --test_mode quick                       # no dataset needed
+python validate_training.py --test_mode quick                     
 python validate_training.py --test_mode full --dataset_path /path/to/instructpix2pix
 ```
 
@@ -137,21 +137,9 @@ All numbers below are **training loss** from the MoE run logs. No held-out valid
 - Inference resizes every input to 512x344, so it suits only landscape images of about that ratio.
 - DDP is run with `find_unused_parameters=True`, which the logs warn is unnecessary and slows each step.
 
-## References
-
-1. R. Rombach, A. Blattmann, D. Lorenz, P. Esser, B. Ommer. *High-Resolution Image Synthesis with Latent Diffusion Models.* CVPR 2022. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
-2. T. Brooks, A. Holynski, A. A. Efros. *InstructPix2Pix: Learning to Follow Image Editing Instructions.* CVPR 2023. [arXiv:2211.09800](https://arxiv.org/abs/2211.09800)
-3. N. Shazeer, A. Mirhoseini, K. Maziarz, A. Davis, Q. Le, G. Hinton, J. Dean. *Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer.* ICLR 2017. [arXiv:1701.06538](https://arxiv.org/abs/1701.06538)
-4. W. Fedus, B. Zoph, N. Shazeer. *Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity.* JMLR 2022. [arXiv:2101.03961](https://arxiv.org/abs/2101.03961)
-5. J. Ho, A. Jain, P. Abbeel. *Denoising Diffusion Probabilistic Models.* NeurIPS 2020. [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
-6. J. Ho, T. Salimans. *Classifier-Free Diffusion Guidance.* NeurIPS 2021 Workshop. [arXiv:2207.12598](https://arxiv.org/abs/2207.12598)
-
-Code and models: [InstructPix2Pix](https://github.com/timothybrooks/instruct-pix2pix), [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5), Hugging Face [`diffusers`](https://github.com/huggingface/diffusers).
-
-## Acknowledgements
-
-Trained on ASU's Sol cluster (2x A100 per job).
 
 ## License
 
-Add a license before publishing (MIT is a common choice). Note that Stable Diffusion 1.5 weights and the InstructPix2Pix dataset have their own licenses.
+This project is licensed under the MIT License.
+
+The MIT License applies to the original code in this repository. Pretrained Stable Diffusion 1.5 weights and the InstructPix2Pix dataset are subject to their respective licenses and usage terms.
