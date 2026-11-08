@@ -43,8 +43,8 @@ Given an image and a text instruction such as `"add a tree"`, the model returns 
 ## Setup
 
 ```bash
-git clone <your-repo-url>
-cd <your-repo>
+git clone https://github.com/shruthic06/Mixture_Of_Experts_Image_Editing.git
+cd Mixture_Of_Experts_Image_Editing
 pip install -r requirements.txt
 ```
 
